@@ -3977,7 +3977,22 @@ class PEDACmd(object):
                             peda.execute("break *%s"%(hex(start+address)))
                             return None
 
-    
+    def break_pie_info(self, *arg):
+        """
+        Breakpoint address(PIE) using info proc mappings
+        Usage:
+            bp address 
+        """
+        address=int(arg[0],16)
+        mappings = peda.execute_redirect("info proc mappings").split("\n")
+        for idx, line in enumerate(mappings):
+            if "Start Addr" in line:
+                start_line = mappings[idx + 1]
+        start = int((start_line.split())[0], 16)
+        print("Start address is: ", hex(start))
+        peda.execute("break *%s"%(hex(start+address)))
+        return None
+
     def baseaddr(self,*arg):
         """
         Get offset value of address in memory.

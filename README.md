@@ -15,7 +15,9 @@ peda-heap
   * `heap bins [main_arena]` -- print freed chunks (bins)
   * `heap trace` -- print (arg + return_value) of malloc,free,realloc
   * `heap checkfree address` -- try free chunk at address and print some info
-  * `heap debug + heap restore` -- try restore heap state before it was overlapped 
+  * `heap debug + heap restore` -- try restore heap state before it was 
+  * `break_pie_info` -- break pie using 'info proc mapping' command
+  overlapped 
   
 ### [IDA]
   * `xdebug` -- execute commands in file peda-cmd.
